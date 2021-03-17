@@ -5,6 +5,7 @@
     <title>Parent Template</title>
 
     <link rel="stylesheet" href="{{ url_for('static',    filename='css/main.css') }}">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
 
 </head>
   <body>
@@ -22,6 +23,17 @@
 
 {% block content %}
 {% endblock %}
+<script>
+  function openForm() {
+  document.getElementById("myForm").style.display = "block";
+  }
 
+  function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+  }
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+
+</script>
  </body>
 </html>

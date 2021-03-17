@@ -13,6 +13,9 @@ def home():
 def about():
     return render_template("about.html")
 
+# @app.route("/upload-csv")
+# def upload_csv():
+#     return render_template("upload_csv.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

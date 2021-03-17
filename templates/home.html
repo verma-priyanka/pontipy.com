@@ -3,14 +3,223 @@
   <head>
     <meta charset="utf-8">
     <title>pontiPy</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+    body {font-family: Arial, Helvetica, sans-serif;
+color: #336FA0;
+
+}
+* {box-sizing: border-box;}
+.introduction{
+  color: white;
+}
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+background-color: #FED23F;
+color: white;
+border: none;
+cursor: pointer;
+opacity: 0.8;
+position: fixed;
+bottom: 20%;
+right: 10%;
+height: 100px;
+width: 100px;
+border-radius: 50%;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+display: none;
+position: fixed;
+bottom: 18%;
+right: 8%;
+z-index: 99;
+border-radius: 20px;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+padding-left: 30px;
+padding-right: 30px;
+background-color: white;
+width: 250px;
+}
+
+
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+background-color: #5190BC;
+color: white;
+padding: 8px 8px;
+border: none;
+cursor: pointer;
+width: 150px;
+margin-left: 19px;
+margin-bottom: 30px;
+opacity: 0.8;
+border-radius: 20px;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+background-color: white;
+color:grey;
+font-size: 30px;
+text-align: right;
+padding-top: 0;
+padding-bottom:0;
+padding-right: 20px;
+width: 5px;
+clear:both;
+float: right;
+margin:0;
+height: 2px;
+}
+.btn .cancel{
+color: black;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+opacity: 1;
+}
+/* .AddSign{
+font-size: 300px;
+} */
+/* The container */
+.container {
+display: block;
+position: relative;
+padding-left: 35px;
+margin-bottom: 12px;
+cursor: pointer;
+font-size: 22px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 25px;
+width: 25px;
+background-color: white;
+border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+background-color: #5190BC;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+top: 9px;
+left: 9px;
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background: white;
+}
+#plussss{
+background-color: #FED23F;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-left: 16px;
+padding-right: 16px;
+color: white;
+font-size: 1.5em;
+border-radius: 100%;
+}
+#addTableDiv{
+padding-top: 30px;
+padding-bottom: 15px;
+}
+#add{
+  position: absolute;
+}
+
+    </style>
   </head>
   <body>
     {% extends "template.html" %}
     {% block content %}
-
+  <div class="introduction">
     <h1> Welcome to pontipy </h1>
     <p> pontiPy is a Python Library for Detecting Change in a Cross-Tab Matrix </p>
+   </div>
+    <!-- <h2>Popup Chat Window</h2>
+    <p>Click on the button at the bottom of this page to open the chat form.</p>
+    <p>Note that the button and the form is fixed - they will always be positioned to the bottom of the browser window.</p> -->
+    <div id="add">
+      <button class="open-button" id="addButton" onclick="openForm()"><span style="font-size:6em;">+</span></button>
+      </div>
+    <div class="chat-popup" id="myForm">
+      <form action="/action_page.php" class="form-container">
+        <button type="button" class="btn cancel" onclick="closeForm()">-</button>
+        <div id="addTableDiv"><input type="file" accept=".csv" id="actual-btn" hidden/>
+        <label for="actual-btn" class="AddTable"><span id="plussss" style="cursor:pointer;">+</span><span style="font-size:1.3em;cursor:pointer;color:#5190BC;"><strong>&nbsp&nbspAdd table</strong></span></label>
+        </div>
+        <hr>
+        <label class="container" style="color:#5190BC;">Change
+          <input type="radio" checked="checked" name="radio">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container" style="color:#5190BC;">Error
+          <input type="radio" name="radio">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container" style="color:#5190BC;">Neither
+          <input type="radio" name="radio">
+          <span class="checkmark"></span>
+        </label>
+        <hr>
+        <button type="submit" class="btn">Run</button>
+      </form>
+      </div>
+    <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
 
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+
+    $(document).ready(function() {
+      $('#add').draggable();
+    });
+    </script>
     {% endblock %}
   </body>
 </html>
