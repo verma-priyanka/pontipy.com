@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>About pontiPy</title>
-  </head>
-  <body>
-    {% extends "template.html" %}
-    {% block content %}
-
-    <h1> pontiPy is a Python Library for Detecting Change in a Cross-Tab Matrix. </h1>
-    <p> Cross-tabulation matrices are commonly used for accuracy assessment and map comparison.</p>
-      The metrics quantity, shift, and exchange can be used to measure differences in a cross-tabulation matrix. <p/>
-      We developed an open-source python library that automates the calculations of these metrics.<p/>
-      Researchers can now automate calculations of these metrics across large datasets as well as integrate with other statistical, analytical, visualization libraries. </p>
-    {% endblock %}
-  </body>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
+   <head>
+      <meta charset="utf-8">
+      <title>About pontiPy</title>
+   </head>
+   <body>
+      {% extends "template.html" %}
+      {% block content %}
+      <div class="container">
+         <h3 class=""text-md-center" style="width: 60rem; ">pontiPy is a Python Library for Detecting Change in a Cross-Tab Matrix.</h3>
+         <p class="lh-lg" style="width: 50rem;">
+            Cross-tabulation matrices are commonly used for accuracy assessment and map comparison.
+            The metrics quantity, shift, and exchange can be used to measure differences in a cross-tabulation matrix.
+            We developed an open-source python library that automates the calculations of these metrics.
+            Researchers can now automate calculations of these metrics across large datasets as well as integrate with other statistical, analytical, visualization libraries.
+         </p>
+      </div>
+      {% endblock %}
+   </body>
 </html>
