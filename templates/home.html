@@ -4,8 +4,7 @@
       <meta charset="utf-8">
       <title>pontiPy</title>
       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
       <style>
          body {font-family: Arial, Helvetica, sans-serif;
          color: #336FA0;
@@ -127,6 +126,10 @@
       {% block content %}
       <div class="container">
          <h3 class="text-md-center" style="width: 60rem; ">Detect Change in a Cross-Tab Matrix </h3>
+         <!-- <form class="" action="data" method="post">
+           <input type="file" name="csvfile" value="">
+           <input type="submit" name="" value="Submit"
+         </form> -->
          <p class="lh-lg" style="width: 50rem;">
          </p>
       </div>
@@ -139,10 +142,10 @@
          <button class="open-button" id="addButton" onclick="openForm()"><span style="font-size:4em;">+</span></button>
       </div>
       <div class="chat-popup" id="myForm">
-         <form action="/action_page.php" class="form-container">
+         <form class="form-container" action="tabletest" method="POST" enctype="multipart/form-data">
             <button type="button" class="btn cancel" onclick="closeForm()">-</button>
             <div id="addTableDiv">
-               <input type="file" accept=".csv" id="actual-btn" hidden/>
+               <input  type="file" accept=".csv" name="csvfile" value="" id="actual-btn" hidden/>
                <div class="zoom">
                   <label for="actual-btn" class="AddTable"><span id="plussss" style="cursor:pointer;">+</span><span style="font-size:1.3em;cursor:pointer;color:#5190BC;">
                   <strong>&nbsp&nbspAdd table</strong></span></label>
@@ -163,9 +166,11 @@
             </div>
             <!--        add margin between radio and run button -->
             <div class="mt-2 col-md-12"> </div>
-            <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" >Run</button>
-         </form>
+              <button class="btn btn-primary" type="submit" value="Submit">Run</button>
+            </form>
       </div>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <script>
          function openForm() {
            document.getElementById("myForm").style.display = "block";
@@ -177,8 +182,9 @@
 
          $(document).ready(function() {
            $('#add').draggable();
-         });
-      </script>
+        });   // -------still not working
+       </script>
+
       {% endblock %}
    </body>
 </html>
