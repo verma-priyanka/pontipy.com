@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>pontiPy</title>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <style>
+         body {font-family: Arial, Helvetica, sans-serif;
+         color: #336FA0;
+         }
+         * {box-sizing: border-box;}
+         .introduction{
+         color: white;
+         }
+         /* Button used to open the chat form - fixed at the bottom of the page */
+         .open-button {
+         background-color: #FED23F;
+         color: white;
+         border: none;
+         cursor: pointer;
+         opacity: 0.8;
+         position: fixed;
+         bottom: 20%;
+         right: 10%;
+         height: 100px;
+         width: 100px;
+         border-radius: 50%;
+         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+         }
+         /* The popup chat - hidden by default */
+         .chat-popup {
+         display: none;
+         position: fixed;
+         bottom: 18%;
+         right: 8%;
+         z-index: 99;
+         border-radius: 20px;
+         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+         padding-left: 30px;
+         padding-right: 30px;
+         background-color: white;
+         width: 250px;
+         }
+         /* Set a style for the submit/send button */
+         .form-container .btn {
+         background-color: #5190BC;
+         color: white;
+         padding: 8px 8px;
+         border: none;
+         cursor: pointer;
+         width: 150px;
+         margin-left: 19px;
+         margin-bottom: 30px;
+         opacity: 0.8;
+         border-radius: 20px;
+         }
+         /* Add a red background color to the cancel button */
+         .form-container .cancel {
+         background-color: white;
+         color:grey;
+         font-size: 30px;
+         text-align: right;
+         padding-top: 0;
+         padding-bottom:0;
+         padding-right: 20px;
+         width: 5px;
+         clear:both;
+         float: right;
+         margin:0;
+         height: 2px;
+         }
+         .btn .cancel{
+         color: black;
+         }
+         /* Add some hover effects to buttons */
+         .form-container .btn:hover, .open-button:hover {
+         opacity: 1;
+         }
+         /* .AddSign{
+         font-size: 300px;
+         } */
+         /* The container */
+         .container {
+         display: block;
+         position: relative;
+         padding-left: 35px;
+         margin-bottom: 12px;
+         cursor: pointer;
+         font-size: 22px;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+         }
+         /* Style the indicator (dot/circle) */
+         .container .checkmark:after {
+         top: 9px;
+         left: 9px;
+         width: 8px;
+         height: 8px;
+         border-radius: 50%;
+         background: white;
+         }
+         #plussss{
+         background-color: #FED23F;
+         padding-top: 10px;
+         padding-bottom: 10px;
+         padding-left: 16px;
+         padding-right: 16px;
+         color: white;
+         font-size: 1.5em;
+         border-radius: 100%;
+         }
+         #addTableDiv{
+         padding-top: 30px;
+         padding-bottom: 15px;
+         }
+         #add{
+         position: absolute;
+         }
+      </style>
+   </head>
+   <body>
+      {% extends "template.html" %}
+      {% block content %}
+      <div class="container">
+         <h3 class="text-md-center" style="width: 60rem; ">Detect Change in a Cross-Tab Matrix </h3>
+         <p class="lh-lg" style="width: 50rem;">
+         </p>
+      </div>
+      <div class="introduction">
+      </div>
+      <!-- <h2>Popup Chat Window</h2>
+         <p>Click on the button at the bottom of this page to open the chat form.</p>
+         <p>Note that the button and the form is fixed - they will always be positioned to the bottom of the browser window.</p> -->
+      <div id="add">
+         <button class="open-button" id="addButton" onclick="openForm()"><span style="font-size:4em;">+</span></button>
+      </div>
+      <div class="chat-popup" id="myForm">
+         <form action="/action_page.php" class="form-container">
+            <button type="button" class="btn cancel" onclick="closeForm()">-</button>
+            <div id="addTableDiv">
+               <input type="file" accept=".csv" id="actual-btn" hidden/>
+               <div class="zoom">
+                  <label for="actual-btn" class="AddTable"><span id="plussss" style="cursor:pointer;">+</span><span style="font-size:1.3em;cursor:pointer;color:#5190BC;">
+                  <strong>&nbsp&nbspAdd table</strong></span></label>
+               </div>
+            </div>
+            <!--        Radio Buttons for Categories-->
+            <div class="form-check" style="color:#5190BC;">
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+               <label class="form-check-label" for="flexRadioDefault1">Change</label>
+            </div>
+            <div class="form-check" style="color:#5190BC;">
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+               <label class="form-check-label" for="flexRadioDefault2">Error</label>
+            </div>
+            <div class="form-check" style="color:#5190BC;">
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+               <label class="form-check-label" for="flexRadioDefault3">Neither</label>
+            </div>
+            <!--        add margin between radio and run button -->
+            <div class="mt-2 col-md-12"> </div>
+            <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" >Run</button>
+         </form>
+      </div>
+      <script>
+         function openForm() {
+           document.getElementById("myForm").style.display = "block";
+         }
+
+         function closeForm() {
+           document.getElementById("myForm").style.display = "none";
+         }
+
+         $(document).ready(function() {
+           $('#add').draggable();
+         });
+      </script>
+      {% endblock %}
+   </body>
+</html>

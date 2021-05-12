@@ -1,0 +1,17 @@
+<!doctype html>
+<title>Simple tables</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+   <body>
+      {% extends "template.html" %}
+      {% block content %}
+      <h3>Test Table</h3>
+      <div class="table-responsive">
+         {% for table in tables %}
+         <h2>{{titles[loop.index]}}</h2>
+         {{ table|safe }}
+         {% endfor %}
+         {% endblock %}
+      </div>
+   </body>
+</div>
