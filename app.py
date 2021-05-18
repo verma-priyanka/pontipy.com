@@ -32,7 +32,7 @@ def about():
 
 @app.route("/help")
 def help():
-    return render_template("help.html")
+    return render_template("help_updated.html")
 
 # @app.route("/upload-csv")
 # def upload_csv():

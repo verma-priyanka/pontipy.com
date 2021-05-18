@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Help Page</title>
+   </head>
+   <body>
+      {% extends "template.html" %}
+      {% block content %}
+      <div class="container">
+         <h3 class="text-md-left" style="width: 60rem; background-color:#e3f2fd;
+         font-family: 'Trebuchet MS', sans-serif; color: #0047AB">Help Page</h3>
+          <p style="margin-left: 2em;"> <a href="#opening">Introduction</a></p>
+          <p style="margin-left: 2em;"> <a href="#input">Input requirements</a></p>
+          <p style="margin-left: 2em;"> <a href="#Metrics and concepts">Metrics and concepts</a></p>
+          <p style="margin-left: 2em;"> <a href="#Acknowledgements and Contact">Acknowledgements and Contact</a></p>
+          <br>
+          <p class="lh-lg" id="opening" style="width: 70rem;">
+            This page illustrates concepts and metrics used in PontiPy, a Python library.
+            The metrics are developed by Dr. Robert Gilmore Pontius at Clark University.
+         </p>
+
+         <h5 style="font-family: 'Trebuchet MS', sans-serif; color: #0047AB">
+          <i>A Python Library for Detecting Change in a Cross-Tab Matrix</i>
+         </h5>
+          <p>Cross-tabulation matrices are commonly used for accuracy assessment
+              and map comparison. The metrics quantity, shift, and exchange can be
+              used to measure differences in a cross-tabulation matrix. We
+              developed an open-source python library that automates the calculations
+              of these metrics. Researchers can now automate calculations of these
+              metrics across large datasets as well as integrate with other
+              statistical, analytical, visualization libraries.
+          </p>
+          <p>This website is built on PontiPy.
+              All users can install the library into a local environment.
+              You can check this <a href="https://github.com/verma-priyanka/pontiPy/blob/master/README.md"
+                                    target="_blank">page</a>
+              to view, download, and install PontiPy. In this help page, we will
+              provide user guide of this website and illustrate concepts used,
+              such as Hit/Miss, in this geo-spatial analytical package.
+          <h3 id="input" style="font-family: 'Trebuchet MS', sans-serif; color: #0047AB">
+           <b>Input</b>
+          </h3>
+
+          </p>
+
+         <p class="lh-lg" style="width: 70rem;">
+             The input is a <b>.csv</b> file with land-cover information that a user uploads using
+            the "+" button.
+            The .csv should have a specific format as displayed below.
+         </p>
+         <ol type="1">
+            <style>
+               show {background-color: orange;
+               padding: 10px;
+               display: none;
+               }
+
+               hov:hover + show {
+               display: block;
+               }
+            </style>
+            <li>The first cell (1:1) is kept empty.</li>
+            <li>The first row & the first column (headings) contain the land-cover categories.
+                The rows/columns can either represent the comparison between two different time points
+                or two classifications, depending on the
+               <hov style="color: orange;">type of analysis wanted.</hov>
+               <show>Scroll down for details.</show>
+            </li>
+            <li>Row/Column headings must match.</li>
+            <li>In the intersecting cell of each category, enter the number of pixels.</li>
+            <li>You can have as many rows/columns as you wish. The amount of data is not going
+            to be a problem for the website. However, having too many land cover categories might
+            result in difficulties in the interpretation of the output statistics.</li>
+         </ol>
+         <a href="#" name="MicrosoftExcelButton"></a>
+         <table>
+           <thead><tr>
+             <th style="width:10rem;"></th>
+             <th style="width:10rem;">Category A</th>
+             <th>B</th>
+             <th>C</th>
+             <th>D</th>
+             <th>E</th>
+             <th>F</th>
+             <th>G</th>
+             </tr></thead>
+           <tbody>
+             <tr>
+               <th>Category A</th>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <th>B</th>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <th>C</th>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <th>D</th>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <th>E</th>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <th>F</th>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+             </tr>
+             <tr>
+               <th>G</th>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+             </tr>
+           </tbody>
+         </table>
+         <script type="text/javascript" src="http://r.office.microsoft.com/r/rlidExcelButton?v=1&kip=1"></script>
+         <p>
+            <a href="https://clarkuedu-my.sharepoint.com/:x:/r/personal/clwang_clarku_edu/Documents/PontiCom/sample.xlsx?d=w3c374c8e72ac462f837ad606f11b4cce&csf=1&web=1&e=fgtXuD"
+               download="sample">
+               <style>
+                  button1 {
+                  background-color: #50C878;
+                  border: none;
+                  color: white;
+                  padding: 15px 32px;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  font-size: 16px;
+                  margin: 4px 2px;
+                  cursor: pointer;
+                  }
+               </style>
+               <button1> Download sample .csv </button1>
+            </a>
+         </p>
+
+         <h3 id="Metrics and concepts" style="font-family: 'Trebuchet MS', sans-serif; color: #0047AB">
+          <b>Metrics and concepts</b>
+         </h3>
+          <p>
+              To choose the appropriate function in the home page (<i>Default, Change, and Error</i>),
+              refer to this session for illustration.
+          </p>
+         <h4 style="font-family: 'Trebuchet MS', sans-serif; color: #0047AB">
+          <b>Default, Change, and Error</b>
+         </h4>
+          <p>
+              <b style="color: orange;">Default</b> is selected when users uses both directions (across both rows and columns)
+              for comparison. Under this scenario, the input categories in the rows and columns can
+              be switched, and the results will be the marginal sum of both directions.
+          </p>
+          <p>
+              <b style="color: orange;">Change</b> is defined as the comparison between two time points. The rows <b>X</b>
+              must be the start time (categories in the start time go into the first column);
+              and the columns <b>Y</b> must be the end time (categories in the end time go
+              into the first row). The direction is set to be <b>horizontal</b> because categories in
+              start time <b>X</b> exist regardless of end time <b>Y</b> (categories in the
+              end time depend on start time). <b>The calculation process to the input table
+              is thus, horizontal</b> that the results (each marginal sum) at the right side of
+              each row is distributed among the entries to the left.
+              <div style="margin-left: 3em;">
+                <i style="color: orange;">Persistence, Gain, and Loss</i> are the results for
+                <b>Change</b> analysis.
+           <br>Persistence is presence and absence for both start time and end time.
+          Gain is absence for start time and presence for end time (gain of presence).
+          Loss is presence for start time and absence for end time (loss of presence).
+              </div>
+          </p>
+          <p>
+              <b style="color: orange;">Error</b> is defined as the comparison between two classifications. The rows <b>X</b>
+              must be the diagnosis (categories in the diagnosis map go into the first column);
+              and the columns <b>Y</b> must be the ground truth (categories in the map of truth go
+              into the first row). The direction is set to be <b>vertical</b> because categories in
+              ground truth <b>Y</b> exist regardless of mand-made diagnosis <b>X</b> (categories
+              in the diagnosis depend on the ground truth). <b>The calculation process to the
+              input table is thus, vertical</b> that the results (each marginal sum) at the bottom
+              of each column is distributed among the entries above.
+                <div style="margin-left: 3em;">
+                <i style="color: orange;">Hit, Miss, False Alarm, and Correct Rejection</i> are
+                   the results for <b>Error</b> analysis.
+          <br>Hits are presence for both diagnosis and truth. False Alarms are presence
+          for diagnosis and absence for truth. Misses are absence for diagnosis and presence for truth.
+          Correct Rejections are absence for both diagnosis and truth.
+                </div>
+          </p>
+
+
+          <h4 style="font-family: 'Trebuchet MS', sans-serif; color: #0047AB">
+          <b>Quantity; Exchange; Shift</b>
+          </h4>
+          <p>The total difference in extent can be divided into 3 types: quantity, exchange, and shift.</p>
+          <p> <div style="margin-left: 3em;">
+              <b style="color: orange;">Quantity</b> refers to the difference in the numbers of pixels
+              of the categories. Quantity difference involves gain of category(ries) and loss of the
+              other category(ies). The results from our website include the sum of quantity difference
+              as well as the composition (gain quantity/loss quantity of particular categories). It is
+              computed as the Maximum(0, |Gain - Loss| <i>(|False Alarm - Miss|)</i>).</div>
+          </p>
+          <p> <div style="margin-left: 3em;">
+              <b style="color: orange;">Exchange</b> forms where each observation in row k and column j
+              is paired with an observation in row j and column k. One set of exchange must involve a
+              pair of categories; for multiple pairs of categories, there will be corresponding sets of
+              exchanges. The results from our website include the sum of exchange difference as well as
+              the composition (pair(s) of categories involved). </div>
+          </p>
+          <p> <div style="margin-left: 3em;">
+              <b style="color: orange;">Shift</b> is the difference that is neither Quantity nor Exchange.
+              If category k has both Gains and losses (False Alarms and Misses), then category k has at least
+              one of the components called Exchange or shift. (Total difference in k - quantity - exchange)</div>
+          </p>
+
+          <h3 id="Acknowledgements and Contact" style="font-family: 'Trebuchet MS', sans-serif; color: #0047AB">
+              <b>Acknowledgements and Contacts</b>
+          </h3>
+          <p>Dr. Robert Gilmore Pontius Jr, rpontius@clarku.edu, created the first version of
+              this workbook in 2001. Pontius has revised this workbook several times, and each
+              revision has a larger number for the suffix of the filename. Pontius created
+              version 42 in 2019. </p>
+          <p>Visit www.clarku.edu/~rpontius for publications on this workbook's methods.
+              Specificaly, see: Pontius Jr, Robert Gilmore and Ali Santacruz. 2014. Quantity,
+              Exchange and Shift Components of Differences in a Square Contingency Table.
+              International Journal of Remote Sensing 35(21): 7543-7554.</p>
+          <p>Pontius Jr, Robert Gilmore. 2019. Component intensities to relate difference by
+              category with difference overall. International Journal of Applied Earth
+              Observations and Geoinformation 77: 94-99.</p>
+          <p>Pontius Jr, Robert Gilmore and Marco Millones. 2011. Death to Kappa: birth of
+              quantity disagreement and allocation disagreement for accuracy assessment.
+              International Journal of Remote Sensing 32(15): 4407-4429.</p>
+          <p>Aldwaik, Safaa Zakaria, Jeffrey A Onsted, and Robert Gilmore Pontius Jr. 2015.
+              Behavior-based aggregation of land categories for temporal change analysis.
+              International Journal of Applied Earth Observation and Geoinformation 35(Part B):
+              229-238.</P>
+          <p style="color: #0047AB"><b>Contributors of PontiCom</b></p>
+          <ul>
+              <li>Priyanka Verma, prverma@clarku.edu</li>
+              <li>Priscilla Ahn, pahn@clarku.edu</li>
+              <li>Claire Wang, clwang@clarku.edu</li>
+              <li>Samuel Wen, xiwen@clarku.edu</li>
+          </ul>
+
+      </div>
+      {% endblock %}
+   </body>
+</html>
