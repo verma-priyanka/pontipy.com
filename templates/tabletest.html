@@ -5,13 +5,42 @@
    <body>
       {% extends "template.html" %}
       {% block content %}
-      <h3>Test Table</h3>
+
       <div class="table-responsive">
          {% for table in tables %}
          <h2>{{titles[loop.index]}}</h2>
          {{ table|safe }}
          {% endfor %}
+         </div>
+
+         <br>
+            <form method="post">
+               <p class="h3"><u>Summary Statistics</u></p>
+
+               <dl class="row">
+               <dt class="col-sm-3">Total Loss:</dt>
+               <dd class="col-sm-9">{{ fa_all }}</dd>
+               </dl>
+               <dl class="row">
+               <dt class="col-sm-3">Total Gain:</dt>
+               <dd class="col-sm-9">{{ miss_all }}</dd>
+               </dl>
+               <dl class="row">
+               <dt class="col-sm-3">Total Persistence:</dt>
+               <dd class="col-sm-9">{{ hit_all }}</dd>
+               </dl>
+               <dl class="row">
+               <dt class="col-sm-3">Total Exchange:</dt>
+               <dd class="col-sm-9">{{ ex_all }}</dd>
+               </dl>
+               <dl class="row">
+               <dt class="col-sm-3">Total Shift:</dt>
+               <dd class="col-sm-9">{{ shift_all }}</dd>
+               </dl>
+
          {% endblock %}
-      </div>
+
+      </form>
+
    </body>
 </div>

@@ -1,20 +1,11 @@
 from flask import Flask, render_template
-import pandas as pd
+from pontiPy import *
 
 app = Flask(__name__)
 
+df = pd.read_csv('sampledata/coastal_1995_2000.csv', index_col=0)
+df_change = pontiPy_Change(df)
 
-df = pd.DataFrame({'1985': [10, 20, 30, 3, 4],
-                   '1986': [5, 6, 7, 8, 9],
-                   '1987': ['a', 'b', 'c', 'd', 'e'],
-                   '1988': ['a', 'b', 'c', 'd', 'e'],
-                   '1989': ['a', 'b', 'c', 'd', 'e'],
-                   '1990': ['a', 'b', 'c', 'd', 'e'],
-                   '1991': [5, 6, 7, 8, 9],
-                   '1992': [5, 6, 7, 8, 9],
-                   '1993': [5, 6, 7, 8, 9],
-                   '1994': [5, 6, 7, 8, 9],
-                   '1995': [5, 6, 7, 8, 9]})
 
 
 @app.route("/")
@@ -24,7 +15,14 @@ def home():
 
 @app.route('/tabletest')
 def html_table():
-    return render_template('tabletest.html',  tables=[df.to_html(classes='table table-bordered table-sm')], titles="")
+    return render_template('tabletest.html',  tables=[df_change.matrix().to_html(classes='table table-bordered table-sm')],
+                                                        result = dict(df_change.exchange(2, Total=False)),
+                                                        fa_all= df_change.loss(),
+                                                        miss_all = df_change.gain(),
+                                                        hit_all=df_change.persistence(),
+                                                        ex_all=df_change.exchange(),
+                                                        shift_all=df_change.shift(),
+                                                        titles="")
 
 
 @app.route("/about")
