@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PontiCom.iml" filepath="$PROJECT_DIR$/.idea/PontiCom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pontipy.com.iml" filepath="$PROJECT_DIR$/.idea/pontipy.com.iml" />
     </modules>
   </component>
 </project>
