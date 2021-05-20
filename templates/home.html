@@ -139,10 +139,10 @@
          <button class="open-button" id="addButton" onclick="openForm()"><span style="font-size:4em;">+</span></button>
       </div>
       <div class="chat-popup" id="myForm">
-         <form action="/action_page.php" class="form-container">
+            <form class="form-container" action="tabletest" method="POST" enctype="multipart/form-data">
             <button type="button" class="btn cancel" onclick="closeForm()">-</button>
             <div id="addTableDiv">
-               <input type="file" accept=".csv" id="actual-btn" hidden/>
+               <input type="file" accept=".csv" name="csvfile" value="" id="actual-btn" hidden/>
                <div class="zoom">
                   <label for="actual-btn" class="AddTable"><span id="plussss" style="cursor:pointer;">+</span><span style="font-size:1.3em;cursor:pointer;color:#5190BC;">
                   <strong>&nbsp&nbspAdd table</strong></span></label>
@@ -163,7 +163,7 @@
             </div>
             <!--        add margin between radio and run button -->
             <div class="mt-2 col-md-12"> </div>
-            <button type="submit" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" >Run</button>
+            <button class="btn btn-primary" type="submit" value="Submit">Run</button>
          </form>
       </div>
       <script>
